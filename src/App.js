@@ -1,24 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/navbar/'
+import Editors from './components/editors/'
+import Footer from './components/footer/'
+// ---------------------
+// Material Components
+// ---------------------
+import { Toolbar, ThemeProvider, createTheme, Container, Grid, Paper } from '@material-ui/core';
+import { green, orange } from '@material-ui/core/colors';
+
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: orange[500],
+    },
+    secondary: {
+      main: green[500],
+    },
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Container >
+        <Navbar />
+        <Toolbar />
+        <Toolbar />
+        <Editors />
+        <Footer />
+      </Container>
+    </ThemeProvider>
   );
 }
 
