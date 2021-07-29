@@ -5,7 +5,7 @@ import Footer from './components/footer/'
 // ---------------------
 // Material Components
 // ---------------------
-import { Toolbar, ThemeProvider, createTheme, Container, Grid, Paper } from '@material-ui/core';
+import { Toolbar, ThemeProvider, createTheme, Container } from '@material-ui/core';
 import { green, orange } from '@material-ui/core/colors';
 
 

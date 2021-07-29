@@ -18,7 +18,7 @@ export class native extends literal {
             case type.STRING:
                 return { value: this.get_string_value(this.value), type: type.STRING };
             case type.BOOLEAN:
-                return { value: (this.value == 'false') ? false : true, type: type.BOOLEAN };
+                return { value: (this.value === 'false') ? false : true, type: type.BOOLEAN };
             default:
                 return { value: this.value, type: type.STRING };
         }

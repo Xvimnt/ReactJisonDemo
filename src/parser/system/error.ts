@@ -17,4 +17,4 @@ export enum error_type {
     SEMANTICO = 2,
 }
 
-export let error_arr : Array<error> = new Array();
+export let error_arr : Array<error> = [];

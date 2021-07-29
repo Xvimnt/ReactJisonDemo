@@ -17,7 +17,7 @@ export default function BottomAppBar() {
 
     return (
         <>
-            <AppBar position="fixed" color="primary-dark" className={classes.appBar}>
+            <AppBar position="fixed" color="primary" className={classes.appBar}>
                 <Toolbar>
                     <Typography>
                         © 2021 Copyright:<a href="https://github.com/Xvimnt"> Javier Monterroso</a>

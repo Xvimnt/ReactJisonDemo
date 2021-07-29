@@ -1,12 +1,13 @@
  
 %{
-   const {type} = require("../system/type") ;
+    const {type} = require("../system/type") ;
+    const { error, error_arr, error_type }= require("../system/error");
 
-   const {arithmetic, arithmetic_type} = require('../expression/arithmetic');
-   const {relational, relational_type} = require('../expression/relational');
-   const {logic, logic_type} = require('../expression/logic');
+    const {arithmetic, arithmetic_type} = require('../expression/arithmetic');
+    const {relational, relational_type} = require('../expression/relational');
+    const {logic, logic_type} = require('../expression/logic');
 
-   const {native} = require('../literal/native');
+    const {native} = require('../literal/native');
 %}
 
 %lex
@@ -72,7 +73,7 @@ id          ([a-zA-Z_])[a-zA-Z0-9_ñÑ]*
         Options 
 **********************/
 /* Lexical Errors */
-.                       errores.push(new Error_(yylloc.first_line, yylloc.first_column, 'Lexico','Valor inesperado ' + yytext));  
+.                   error_arr.push(new error(yylloc.first_line, yylloc.first_column, error_type.SINTACTICO,'Valor inesperado ' + yytext));  
 /lex
 /* Prede */
 %left 'tk_or'
@@ -152,15 +153,15 @@ pr_expr
 
 pr_native :
     tk_float {
-        $$ = new native($1, ,type.FLOAT ,@1.first_line, @1.first_column);
+        $$ = new native($1, type.FLOAT ,@1.first_line, @1.first_column);
     }
     | tk_string {
-        $$ = new native($1, ,type.STRING ,@1.first_line, @1.first_column);
+        $$ = new native($1, type.STRING ,@1.first_line, @1.first_column);
     }
     | tk_int {
-        $$ = new native($1, ,type.INTEGER ,@1.first_line, @1.first_column);
+        $$ = new native($1, type.INTEGER ,@1.first_line, @1.first_column);
     }
     | tk_bool {
-        $$ = new native($1, ,type.BOOLEAN ,@1.first_line, @1.first_column);
+        $$ = new native($1, type.BOOLEAN ,@1.first_line, @1.first_column);
     }
 ;

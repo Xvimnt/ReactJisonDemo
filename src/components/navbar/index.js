@@ -31,7 +31,7 @@ function Navbar() {
 
     return (
         <div className={classes.root}>
-            <AppBar position="fixed" color="primary-dark">
+            <AppBar position="fixed" color="primary">
                 <Toolbar>
                     <Reports />
                     <Typography variant="h6" className={classes.title}>
