@@ -20,6 +20,7 @@ import 'codemirror/theme/monokai.css';
 // ---------------------
 // Parser
 // ---------------------
+import { error, error_arr, error_type } from "../../parser/system/error";
 const parser = require('../../parser/grammar/main');
 
 export default class editors extends Component {
@@ -35,11 +36,18 @@ export default class editors extends Component {
     compile = () => {
         try {
             let ast = parser.parse(this.state.input);
+            console.log(ast);
             let output_data = ast.execute(new environment(null));
-            console.log(output_data);
-            this.setState({
-                output: output_data.value
-            })
+            if(error_arr.length > 0) {
+                console.log(error_arr);
+                console.log("hubieron errores");
+            } else {
+                console.log(output_data.value);
+                // this.setState({
+                //     output: output_data.value
+                // })
+            }
+            
         } catch (error) {
             console.log(error);
         }

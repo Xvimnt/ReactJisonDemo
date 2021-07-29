@@ -19,7 +19,6 @@ export class arithmetic extends expression {
     }
 
     public execute(environment: environment): data {
-
         const left_data = this.left.execute(environment);
         const right_data = this.right.execute(environment);
         const dominant_type = this.get_dominant_type(left_data.type, right_data.type);
@@ -32,7 +31,7 @@ export class arithmetic extends expression {
                     case type.INTEGER:
                         return { value: (left_data.value + right_data.value), type: type.INTEGER };
                     default:
-                        error_arr.push(new error(this.line, this.column, error_type.SEMANTICO, 'No se puede operar: ' + left_data.type + ' _ ' + right_data.type));
+                        error_arr.push(new error(this.line, this.column, error_type.SEMANTICO, 'No se puede operar: ' + left_data.type + ' + ' + right_data.type));
                 }
                 break;
             case arithmetic_type.MINUS:
@@ -40,7 +39,7 @@ export class arithmetic extends expression {
                      case type.INTEGER:
                         return { value: (left_data.value - right_data.value), type: type.INTEGER };
                     default:
-                        error_arr.push(new error(this.line, this.column, error_type.SEMANTICO, 'No se puede operar: ' + left_data.type + ' _ ' + right_data.type));
+                        error_arr.push(new error(this.line, this.column, error_type.SEMANTICO, 'No se puede operar: ' + left_data.type + ' - ' + right_data.type));
                 }
                 break;
             case arithmetic_type.TIMES:
@@ -48,7 +47,7 @@ export class arithmetic extends expression {
                     case type.INTEGER:
                         return { value: (left_data.value * right_data.value), type: type.INTEGER };
                     default:
-                        error_arr.push(new error(this.line, this.column, error_type.SEMANTICO, 'No se puede operar: ' + left_data.type + ' _ ' + right_data.type));
+                        error_arr.push(new error(this.line, this.column, error_type.SEMANTICO, 'No se puede operar: ' + left_data.type + ' * ' + right_data.type));
                 }
                 break;
             case arithmetic_type.POWER:
@@ -56,7 +55,7 @@ export class arithmetic extends expression {
                     case type.INTEGER:
                         return { value: (Math.pow(left_data.value, right_data.value)), type: type.INTEGER };
                     default:
-                        error_arr.push(new error(this.line, this.column, error_type.SEMANTICO, 'No se puede operar: ' + left_data.type + ' _ ' + right_data.type));
+                        error_arr.push(new error(this.line, this.column, error_type.SEMANTICO, 'No se puede operar: ' + left_data.type + ' ** ' + right_data.type));
                 }
                 break;
             case arithmetic_type.MOD:
@@ -64,7 +63,7 @@ export class arithmetic extends expression {
                     case type.INTEGER:
                         return { value: (left_data.value % right_data.value), type: type.INTEGER };
                     default:
-                        error_arr.push(new error(this.line, this.column, error_type.SEMANTICO, 'No se puede operar: ' + left_data.type + ' _ ' + right_data.type));
+                        error_arr.push(new error(this.line, this.column, error_type.SEMANTICO, 'No se puede operar: ' + left_data.type + ' % ' + right_data.type));
                 }
                 break;
             case arithmetic_type.DIV:
@@ -76,7 +75,7 @@ export class arithmetic extends expression {
                         }
                         else return { value: (left_data.value / right_data.value), type: type.INTEGER };
                     default:
-                        error_arr.push(new error(this.line, this.column, error_type.SEMANTICO, 'No se puede operar: ' + left_data.type + ' _ ' + right_data.type));
+                        error_arr.push(new error(this.line, this.column, error_type.SEMANTICO, 'No se puede operar: ' + left_data.type + ' / ' + right_data.type));
                 }
                 break;
         }

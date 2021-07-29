@@ -37,8 +37,8 @@ id          ([a-zA-Z_])[a-zA-Z0-9_ñÑ]*
         Tokens 
 **********************/
 
-{decimal}               return 'tk_float'
 {number}                return 'tk_int'
+{decimal}               return 'tk_float'
 {string}                return 'tk_string'
 {string2}               return 'tk_string'
 {id}                    return 'tk_id'
